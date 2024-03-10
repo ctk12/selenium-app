@@ -30,3 +30,6 @@ def download_selenum():
 def home():
     if (request.method == "GET"):
         return download_selenum()
+    
+# dd=download_selenum()
+# print(dd)
