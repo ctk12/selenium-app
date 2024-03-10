@@ -31,5 +31,7 @@ def home():
     if (request.method == "GET"):
         return download_selenum()
     
+if __name__ == '__main__':
+  app.run(port=5000)
 # dd=download_selenum()
 # print(dd)
