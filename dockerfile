@@ -10,7 +10,17 @@
 # # CMD uvicorn main:app --host 0.0.0.0 --port $PORT
 # CMD ["flask", "run", "--host", "0.0.0.0"]
 
-FROM python:3.9
+FROM selenium/standalone-chrome
+# FROM python:3.9
+# Download and extract Python source code
+RUN wget https://www.python.org/ftp/python/3.9.15/Python-3.9.15.tgz -O python.tgz
+RUN tar xzf python.tgz
+
+# Build and install Python
+RUN cd Python-3.9.15 && ./configure --enable-optimizations && make -alt install
+
+# Set Python executable path (optional, depends on your application)
+RUN ln -s /usr/local/bin/python3.9 /usr/bin/python3.9
 
 WORKDIR /app
 
